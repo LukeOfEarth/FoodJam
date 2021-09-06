@@ -17,4 +17,12 @@ public class Bullet : MonoBehaviour
         }
         rb.AddForce((dir.normalized) * thrust, ForceMode2D.Force);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Terrain")
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
