@@ -11,8 +11,8 @@ public class GrapplingGun : MonoBehaviour
 
     [Header("Retraction:")]
     private GameObject contactPoint;
-    private bool active = false;
-    private bool retracting = false;
+    public bool active = false;
+    public bool retracting = false;
     public float retractionSpeed;
     public float retractionFinishDistance;
     public float retractionDelay;
@@ -107,14 +107,15 @@ public class GrapplingGun : MonoBehaviour
 
             if(retracting && active)
             {
-                if(Vector3.Distance(transform.position, contactPoint.transform.position) > retractionFinishDistance)
+                contactPoint.transform.position = Vector3.Lerp(contactPoint.transform.position, transform.position, retractionSpeed * Time.deltaTime);
+                grapplePoint = new Vector2(contactPoint.transform.position.x, contactPoint.transform.position.y);
+                if (Vector3.Distance(transform.position, contactPoint.transform.position) > retractionFinishDistance)
                 {
-                    contactPoint.transform.position = Vector3.Lerp(contactPoint.transform.position, transform.position, retractionSpeed * Time.deltaTime);
-                    grapplePoint = new Vector2(contactPoint.transform.position.x, contactPoint.transform.position.y);
+                    
                 }
                 else
                 {
-                    CompleteRetraction();
+                    
                 }
             }
         }
@@ -124,6 +125,23 @@ public class GrapplingGun : MonoBehaviour
     {
         contactPoint = Instantiate(grappleEnd, new Vector3(grapplePoint.x, grapplePoint.y, 0), transform.rotation);
         retracting = true;
+
+        if (collisionObj)
+        {
+            switch (collisionObj.tag)
+            {
+                case "Food":
+                    StartCoroutine("CompleteRetractFood");
+                    break;
+                case "Terrain":
+                    StartCoroutine("CompleteRetractWall");
+                    break;
+            }
+        }
+        else
+        {
+            StartCoroutine("CompleteRetractWall");
+        }
         return contactPoint;
     }
 
@@ -177,7 +195,6 @@ public class GrapplingGun : MonoBehaviour
 
     void DecideCollisionBehaviour(GameObject col)
     {
-        print(col.gameObject.name);
         collisionObj = col;
         switch (col.tag)
         {
@@ -245,9 +262,15 @@ public class GrapplingGun : MonoBehaviour
         collisionObj.GetComponent<Food>().Grabbed(newObj);
     }
 
-    IEnumerator GrabWall()
+    IEnumerator CompleteRetractWall()
     {
-        yield return new WaitForSeconds(retractionDelay);
-        Grapple();
+        yield return new WaitForSeconds(0.1f);
+        CompleteRetraction();
+    }
+
+    IEnumerator CompleteRetractFood()
+    {
+        yield return new WaitForSeconds(0.2f);
+        CompleteRetraction();
     }
 }
