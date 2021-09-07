@@ -18,7 +18,7 @@ public class Food : MonoBehaviour
     {
         point = target;
         grabbed = true;
-        StartCoroutine("Kill");
+        //StartCoroutine("Kill");
     }
 
     IEnumerator Kill()

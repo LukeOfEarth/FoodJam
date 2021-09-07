@@ -8,6 +8,7 @@ public class GrapplingGun : MonoBehaviour
     public GrapplingRope grappleRope;
     public GameObject grappleEnd;
     public GameObject collisionObj;
+    private PlayerController playerController;
 
     [Header("Retraction:")]
     private GameObject contactPoint;
@@ -65,6 +66,7 @@ public class GrapplingGun : MonoBehaviour
     {
         grappleRope.enabled = false;
         m_springJoint2D.enabled = false;
+        playerController = GetComponentInParent<PlayerController>();
     }
 
     private void Update()
@@ -150,7 +152,7 @@ public class GrapplingGun : MonoBehaviour
         GameObject[] grapples = GameObject.FindGameObjectsWithTag("GrapplePoint");
         grappleRope.enabled = false;
         m_springJoint2D.enabled = false;
-        m_rigidbody.gravityScale = 1;
+        m_rigidbody.gravityScale = playerController.baseGravity;
         foreach(GameObject grapple in grapples)
         {
             Destroy(grapple);

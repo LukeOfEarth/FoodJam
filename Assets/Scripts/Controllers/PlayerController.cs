@@ -10,8 +10,9 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
 	[SerializeField] private Transform m_CeilingCheck;                          // A position marking where to check for ceilings
 
+	public float baseGravity = 5;
 	const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
-	private bool m_Grounded;            // Whether or not the player is grounded.
+	public bool m_Grounded;            // Whether or not the player is grounded.
 	const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
 	private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
+		m_Rigidbody2D.gravityScale = baseGravity;
 
 		if (OnLandEvent == null)
 			OnLandEvent = new UnityEvent();
@@ -52,6 +54,10 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
+	public void Landed()
+    {
+		GetComponent<PlayerMovement>().jump = false;
+    }
 
 	public void Move(float move, bool jump)
 	{
