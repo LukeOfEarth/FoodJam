@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && !jump)
         {
             jump = true;
-            print("jump called");
         }
     }
 

@@ -18,11 +18,8 @@ public class HandleFood : MonoBehaviour
         {
             if (slot.GetComponentInChildren<FoodController>() == null)
             {
-                food.gameObject.transform.parent = slot.transform;
-                food.gameObject.transform.localPosition = Vector3.forward;
-                food.gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0);
-                food.gameObject.tag = "Player";
                 food.isAttached = true;
+                food.Rotate(slot);
                 filledSlots++;
                 break;
             }

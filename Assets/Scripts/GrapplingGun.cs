@@ -110,7 +110,7 @@ public class GrapplingGun : MonoBehaviour
 
             if(retracting && active)
             {
-                contactPoint.transform.position = Vector3.Lerp(contactPoint.transform.position, transform.position, retractionSpeed * Time.deltaTime);
+                contactPoint.transform.position = Vector3.Lerp(contactPoint.transform.position, playerController.gameObject.transform.position, retractionSpeed * Time.deltaTime);
                 grapplePoint = new Vector2(contactPoint.transform.position.x, contactPoint.transform.position.y);
             }
         }
