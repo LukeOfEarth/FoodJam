@@ -18,12 +18,5 @@ public class Food : MonoBehaviour
     {
         point = target;
         grabbed = true;
-        //StartCoroutine("Kill");
-    }
-
-    IEnumerator Kill()
-    {
-        yield return new WaitForSeconds(0.5f);
-        Destroy(this.gameObject);
     }
 }

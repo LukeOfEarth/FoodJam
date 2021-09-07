@@ -64,6 +64,7 @@ public class GrapplingGun : MonoBehaviour
 
     private void Start()
     {
+        m_camera = GameObject.Find("Main Camera").GetComponent<Camera>();
         grappleRope.enabled = false;
         m_springJoint2D.enabled = false;
         playerController = GetComponentInParent<PlayerController>();
@@ -111,14 +112,6 @@ public class GrapplingGun : MonoBehaviour
             {
                 contactPoint.transform.position = Vector3.Lerp(contactPoint.transform.position, transform.position, retractionSpeed * Time.deltaTime);
                 grapplePoint = new Vector2(contactPoint.transform.position.x, contactPoint.transform.position.y);
-                if (Vector3.Distance(transform.position, contactPoint.transform.position) > retractionFinishDistance)
-                {
-                    
-                }
-                else
-                {
-                    
-                }
             }
         }
     }
