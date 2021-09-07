@@ -22,6 +22,7 @@ public class PlayerState : MonoBehaviour
 
     public void pickupFood(FoodController food)
     {
+        print("pickup");
         if (food.isAttached)
         {
             return;

@@ -19,7 +19,6 @@ public class FoodPickup : MonoBehaviour
         if (isPlayer)
         {
             player.GetComponent<PlayerState>().pickupFood(food);
-            this.gameObject.layer = 2;
         }
     }
 }
