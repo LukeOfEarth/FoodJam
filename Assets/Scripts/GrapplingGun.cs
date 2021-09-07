@@ -43,6 +43,10 @@ public class GrapplingGun : MonoBehaviour
     [SerializeField] private bool hasMaxDistance = false;
     [SerializeField] private float maxDistnace = 20;
 
+    [Header("Custom Length:")]
+    [SerializeField] private bool limited;
+    [SerializeField] private float length;
+
     private enum LaunchType
     {
         Transform_Launch,
@@ -172,17 +176,38 @@ public class GrapplingGun : MonoBehaviour
     void SetGrapplePoint()
     {
         Vector2 distanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
-        if (Physics2D.Raycast(firePoint.position, distanceVector.normalized, HitMe))
+
+        if (limited)
         {
-            RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized, HitMe);
-            if (_hit.transform.gameObject.layer == grappableLayerNumber || grappleToAll)
+            if (Physics2D.Raycast(firePoint.position, distanceVector.normalized, length, HitMe))
             {
-                DecideCollisionBehaviour(_hit.transform.gameObject);
-                if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
+                RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized, length, HitMe);
+                if (_hit.transform.gameObject.layer == grappableLayerNumber || grappleToAll)
                 {
-                    grapplePoint = _hit.point;
-                    grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
-                    grappleRope.enabled = true;
+                    DecideCollisionBehaviour(_hit.transform.gameObject);
+                    if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
+                    {
+                        grapplePoint = _hit.point;
+                        grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
+                        grappleRope.enabled = true;
+                    }
+                }
+            }
+        }
+        else
+        {
+            if (Physics2D.Raycast(firePoint.position, distanceVector.normalized, Mathf.Infinity, HitMe))
+            {
+                RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized, Mathf.Infinity, HitMe);
+                if (_hit.transform.gameObject.layer == grappableLayerNumber || grappleToAll)
+                {
+                    DecideCollisionBehaviour(_hit.transform.gameObject);
+                    if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
+                    {
+                        grapplePoint = _hit.point;
+                        grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
+                        grappleRope.enabled = true;
+                    }
                 }
             }
         }
