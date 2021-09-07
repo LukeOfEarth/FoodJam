@@ -1468,17 +1468,6 @@ MonoBehaviour:
     m_RotationOrder: 4
   ropeProgressionSpeed: 6.7
   isGrappling: 1
---- !u!114 &1500768348 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6168267482256852500, guid: 8507900ef50110d4da06e002c8f5c2b1, type: 3}
-  m_PrefabInstance: {fileID: 1942557831}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62c9a39d7be53d044b264e740a5863e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1507296108
 GameObject:
   m_ObjectHideFlags: 0
@@ -1842,8 +1831,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a80f0f0d3430f8f49a725267afdd0987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 1500768348}
-  runSpeed: 10
+  playerController: {fileID: 1540359938}
+  runSpeed: 50
 --- !u!95 &1540359941
 Animator:
   serializedVersion: 3
