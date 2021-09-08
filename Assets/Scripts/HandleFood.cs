@@ -1,11 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class HandleFood : MonoBehaviour
 {
     public int filledSlots = 0;
     public GameObject[] slots;
+    public GameObject[] f;
+    private PlayerState playerState;
+
+    private void Start()
+    {
+        filledSlots = 0;
+        playerState = GetComponentInParent<PlayerState>();
+    }
 
     public bool addFoodToSlot(FoodController food)
     {
@@ -25,27 +34,43 @@ public class HandleFood : MonoBehaviour
             }
         }
 
+        if (filledSlots == slots.Length)
+        {
+            playerState.goUpLayer();
+        }
+
+        f = getFilledSlots();
+
         return true;
     }
 
-    public int removeFoodFromSlot(int count)
+    public void removeFoodFromSlot(int count)
     {
-        int tracker = 0;
-        foreach (GameObject slot in slots)
+        for(int i=0; i<count; i++)
         {
-            if (slot.GetComponentInChildren<FoodController>() != null)
+            FoodController food = slots[filledSlots - 1].GetComponentInChildren<FoodController>();
+            if(food)
             {
-                Destroy(slot.gameObject);
+                Destroy(food.gameObject);
                 filledSlots--;
-                tracker++;
-            }
-
-            if (tracker == count)
-            {
-                return tracker;
             }
         }
 
-        return count - tracker;
+        if(filledSlots == 0)
+        {
+            playerState.goDownLayer();
+        }
+    }
+
+    public GameObject[] getFilledSlots()
+    {
+        GameObject[] filled = slots.Where(s => s.GetComponentInChildren<FoodController>() != null).ToArray();
+        return filled;
+    }
+
+    public GameObject useFoodAsAmmo()
+    {
+        GameObject ammo = slots[filledSlots - 1].GetComponentInChildren<FoodController>().gameObject;
+        return ammo;
     }
 }

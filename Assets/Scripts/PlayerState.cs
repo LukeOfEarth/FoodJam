@@ -9,7 +9,7 @@ public class PlayerState : MonoBehaviour
     public GameObject middleLayer;
     public GameObject outerLayer;
 
-    private GameObject activeLayer;
+    public GameObject activeLayer;
     private enum Transition
     {
         UP,
@@ -88,4 +88,15 @@ public class PlayerState : MonoBehaviour
                 return false;
         }
     }
+
+    public void goUpLayer()
+    {
+        switchLayer(Transition.UP);
+    }
+
+    public void goDownLayer()
+    {
+        switchLayer(Transition.DOWN);
+    }
+
 }

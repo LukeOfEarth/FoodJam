@@ -117,6 +117,7 @@ MonoBehaviour:
   - {fileID: 7566168754021724330}
   - {fileID: 7566168752711646033}
   - {fileID: 7566168753971574931}
+  f: []
 --- !u!1 &7566168752381416366
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,6 +235,7 @@ MonoBehaviour:
   - {fileID: 7566168752840914549}
   - {fileID: 7566168752585542696}
   - {fileID: 7566168753100822476}
+  f: []
 --- !u!1 &7566168752585542696
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,6 +473,7 @@ MonoBehaviour:
   - {fileID: 7566168752381416366}
   - {fileID: 7566168753874141252}
   - {fileID: 7566168753633810169}
+  f: []
 --- !u!1 &7566168753069378741
 GameObject:
   m_ObjectHideFlags: 0
@@ -1479,7 +1482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e47dc2dcbc729364c8944969170ea954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 4966467807597765891, guid: ba7747086a6bb7944b58b2ff7bae471e, type: 3}
+  bullet: {fileID: 5848150060666317078, guid: 3f85a4dc920ac414ebf4a97756c9a618, type: 3}
   reticle: {fileID: 7566168753069378741}
   firePoint: {fileID: 7566168753479823223}
   ammo: 10
@@ -1571,3 +1574,4 @@ MonoBehaviour:
   innerLayer: {fileID: 7566168752885651135}
   middleLayer: {fileID: 7566168752248541690}
   outerLayer: {fileID: 7566168752561784120}
+  activeLayer: {fileID: 0}
