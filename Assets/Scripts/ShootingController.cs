@@ -9,24 +9,30 @@ public class ShootingController : MonoBehaviour
     public GameObject firePoint;
     public int ammo;
     public float speed;
-    Vector2 direction;
+    private PlayerState playerState;
+    private void Start()
+    {
+        playerState = GetComponent<PlayerState>();
+    }
 
     private void Update()
     {
        if(Input.GetMouseButtonDown(0))
        {
-            if(ammo > 0)
+            if(playerState.hp > 1)
             {
                 FireProjectile(bullet);
-                ammo--;
+                playerState.hp--;
             }
        }
     }
 
     void FireProjectile(GameObject projectile)
     {
-        direction = new Vector2(reticle.transform.position.x, reticle.transform.position.y);
+        GameObject ammo = playerState.activeLayer.GetComponent<HandleFood>().useFoodAsAmmo();
         GameObject shot = Instantiate(projectile, this.transform.position, projectile.transform.rotation);
+        playerState.dropFood(1);
+        shot.GetComponent<SpriteRenderer>().sprite = ammo.GetComponent<SpriteRenderer>().sprite;
         shot.GetComponent<Rigidbody2D>().AddForce((firePoint.transform.right * speed * 100));
     }
 }

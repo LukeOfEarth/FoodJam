@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 796299536232183817}
   - component: {fileID: 1403177677390060157}
   - component: {fileID: 6864086767337068777}
+  - component: {fileID: -8224577864511778741}
   m_Layer: 3
   m_Name: Food
   m_TagString: Food
@@ -158,3 +159,43 @@ PolygonCollider2D:
       - {x: 0.12, y: -0.049999997}
       - {x: 0.16, y: -0.01}
       - {x: 0.16, y: 0.12}
+--- !u!114 &-8224577864511778741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796299536232183815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af2eadb100b724144821724037f179eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 5bd8511467e9a2b4bb8eae8769b8d32a, type: 3}
+  - {fileID: 21300000, guid: d91553cf723587b4399c642352e26ec9, type: 3}
+  - {fileID: 21300000, guid: c684be2f10352b84ba29e39a8870e0d2, type: 3}
+  - {fileID: 21300000, guid: d6aeebbcb7f531545957372a633c38c5, type: 3}
+  - {fileID: 21300000, guid: 28fea6b79a2bdfe4c8f3bc28d4fe3494, type: 3}
+  - {fileID: 21300000, guid: 574fab1bca06eff4ca919cccb1287ed0, type: 3}
+  - {fileID: 21300000, guid: 43193dd8b8d6b1d438f16587fb815bda, type: 3}
+  - {fileID: 21300000, guid: 1ba65ba406fabcb4d8fe965e0f2729a1, type: 3}
+  - {fileID: 21300000, guid: f5f46a7942827d14fb3c94e6031be1cb, type: 3}
+  - {fileID: 21300000, guid: 5408c86b3d70af745af4fd849eccbd2f, type: 3}
+  - {fileID: 21300000, guid: 806752eba66f5f54d93647e1ffd27110, type: 3}
+  - {fileID: 21300000, guid: d6cda726a9caf8e489152d29358e2a74, type: 3}
+  - {fileID: 21300000, guid: 590e0604badec79448283b084b5559ee, type: 3}
+  - {fileID: 21300000, guid: 063da14b48d7ae546a4ac5b42d3d08a9, type: 3}
+  - {fileID: 21300000, guid: 034f37f619f47514d831aba3c88dc652, type: 3}
+  - {fileID: 21300000, guid: 8644c89b9383cd440849f3b8d8378ee1, type: 3}
+  - {fileID: 21300000, guid: 36a678d5d30bda84fbecd4b306b09ca9, type: 3}
+  - {fileID: 21300000, guid: f2aba86dad62c2140a1e1e05136426a7, type: 3}
+  - {fileID: 21300000, guid: 445dd60648d76a54ebbc2b1ab54e634f, type: 3}
+  - {fileID: 21300000, guid: f0d3aebe9b4434d4b830bbc8159c69f7, type: 3}
+  - {fileID: 21300000, guid: 54183701efe804d449af8448940aed64, type: 3}
+  - {fileID: 21300000, guid: 3a5f186258bcc7740b1a3fe36d6d654f, type: 3}
+  - {fileID: 21300000, guid: cea13a76c0b660e44b7a2d65c30aef5d, type: 3}
+  - {fileID: 21300000, guid: 6a94ef502634fe24fab4c32fd85464dc, type: 3}
+  - {fileID: 21300000, guid: 088874b6229cd2c46a101188761c64dc, type: 3}
+  - {fileID: 21300000, guid: 893a8cdff82957e4797a6a7e28537e33, type: 3}
+  - {fileID: 21300000, guid: 9119783504bacc34ca935528bdf1b046, type: 3}
