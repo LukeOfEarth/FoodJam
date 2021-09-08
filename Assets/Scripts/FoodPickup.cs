@@ -12,9 +12,9 @@ public class FoodPickup : MonoBehaviour
         player = GameObject.Find("Player");
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        bool isPlayer = collision.collider.gameObject.tag == "Player";
+        bool isPlayer = collision.gameObject.tag == "Player";
         
         if (isPlayer)
         {

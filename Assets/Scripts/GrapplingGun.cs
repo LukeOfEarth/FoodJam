@@ -9,6 +9,7 @@ public class GrapplingGun : MonoBehaviour
     public GameObject grappleEnd;
     public GameObject collisionObj;
     private PlayerController playerController;
+    private PlayerState playerState;
 
     [Header("Retraction:")]
     private GameObject contactPoint;
@@ -72,6 +73,7 @@ public class GrapplingGun : MonoBehaviour
         grappleRope.enabled = false;
         m_springJoint2D.enabled = false;
         playerController = GetComponentInParent<PlayerController>();
+        playerState = GetComponentInParent<PlayerState>();
     }
 
     private void Update()
@@ -291,6 +293,11 @@ public class GrapplingGun : MonoBehaviour
     IEnumerator CompleteRetractFood()
     {
         yield return new WaitForSeconds(0.2f);
+        FoodController food = collisionObj.GetComponent<FoodController>();
+        if (!food.isAttached)
+        {
+            playerState.pickupFood(food);
+        }
         CompleteRetraction();
     }
 }

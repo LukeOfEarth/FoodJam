@@ -9,11 +9,9 @@ public class FoodController : MonoBehaviour
 
     public void Rotate(GameObject slot)
     {
-        print("rotaion");
         this.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
         this.gameObject.layer = 2;
         this.gameObject.transform.parent = slot.transform;
-        //this.gameObject.transform.localPosition = Vector3.forward;
         this.gameObject.transform.Rotate(0.0f, 0.0f, Random.Range(0.0f, 360.0f));
         this.gameObject.transform.localScale = new Vector3(0.75f, 0.75f, 0);
         this.gameObject.transform.localPosition = new Vector3(0, 0, -0.1f);
