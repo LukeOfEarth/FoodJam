@@ -8,11 +8,14 @@ public class EnemyCombat: MonoBehaviour
     public Transform attackPoint;
     public LayerMask playerLayer;
 
+    private int numAttack = 0;
+
     int currentHealth;
 
     public float attackRange = 0.5f;
     public int MaxHealth {get; protected set;} = 10;
     public int AttackDamage {get; protected set;} = 1;
+
     
     // Start is called before the first frame update
     void Start()
@@ -35,11 +38,13 @@ public class EnemyCombat: MonoBehaviour
     
 
     public void Attack()
-    {
+    {     
         Collider2D[] players = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
         // foreach(Collider2D player in players){
         //     player.GetComponent<PlayerCombat>().TakeDamage(AttackDamage);
         // }
+        numAttack += 1;
+        Debug.Log("Atacked player!! " + numAttack);
     }
 
 

@@ -8,17 +8,37 @@ public class Enemy : MonoBehaviour
 	public bool isFlipped = false;
 	public int minLookHeight = 2;
 	public float sightRange = 15f;
+	public float speed = 2.5f;
+
+	public Animator animator;
+	public EnemyCombat enemyCombat;
+
+	private StateMachine stateMachine;
     
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+
+		stateMachine = new StateMachine();
+		var enemyRun = new EnemyRun(GetComponent<Rigidbody2D>(), player, animator, speed);
+		var enemyIdle = new EnemyIdle(animator);
+		var enemyAttack = new EnemyAttack(GetComponent<EnemyCombat>(), animator);
+
+		stateMachine.AddTransition(enemyIdle, enemyRun, () => TargetInSight(player, transform));
+		stateMachine.AddAnyTransition(enemyIdle, () => !TargetInSight(player, transform));
+		stateMachine.AddAnyTransition(enemyAttack, () => enemyCombat.CanAttack());
+		stateMachine.AddTransition(enemyAttack, enemyIdle, () => !enemyCombat.CanAttack());
+
+
+		stateMachine.SetState(enemyIdle);
     }
 
     // Update is called once per frame
     void Update()
     {
         LookAtPlayer();
+		stateMachine.UpdateStateMachine();
     }
 
 	public void LookAtPlayer()
