@@ -8,6 +8,7 @@ public class DeathTimeout : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
+        StartCoroutine("FailSafe");
     }
 
     private void Update()
@@ -16,5 +17,12 @@ public class DeathTimeout : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    IEnumerator FailSafe()
+    {
+        yield return new WaitForSeconds(1);
+        player.GetComponentInChildren<GrapplingGun>().active = false;
+        player.GetComponentInChildren<GrapplingGun>().retracting = false;
     }
 }

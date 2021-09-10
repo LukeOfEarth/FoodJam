@@ -14,7 +14,6 @@ public class PlayerCollisions : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
-            print("test");
             int damage = 1;
             playerState.TakeDamage(damage);
         }
