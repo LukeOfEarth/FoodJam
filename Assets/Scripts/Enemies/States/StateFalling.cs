@@ -2,26 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyIdle : IState
+public class StateFalling : IState
 {
     Animator animator;
 
-    public EnemyIdle(Animator animator_)
+    public StateFalling(Animator animator_)
     {
         animator = animator_;
     }
     
     public void OnStateEnter()
     {
-        animator.SetTrigger("Idle");
+        animator.SetBool("InAir", true);
     }
 
     public void StateUpdate()
     {
+        
     }
 
     public void OnStateExit()
     {
-        animator.ResetTrigger("Idle");
+        animator.SetBool("InAir", false);
     }
 }

@@ -43,6 +43,12 @@ public class StateMachine
         currentState.OnStateEnter();
     }
 
+
+    public IState GetCurrentState()
+    {
+        return currentState;
+    }
+
     
     public void AddTransition(IState from, IState nextState, Func<bool> predicate)
     {

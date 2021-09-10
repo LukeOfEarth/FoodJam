@@ -13,35 +13,39 @@ public class Enemy : MonoBehaviour
 	public Animator animator;
 	public EnemyCombat enemyCombat;
 
-	private StateMachine stateMachine;
+	protected StateMachine stateMachine;
     
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
 		stateMachine = new StateMachine();
-		var enemyRun = new EnemyRun(GetComponent<Rigidbody2D>(), player, animator, speed);
-		var enemyIdle = new EnemyIdle(animator);
-		var enemyAttack = new EnemyAttack(GetComponent<EnemyCombat>(), animator);
+		var enemyRun = new StateRun(GetComponent<Rigidbody2D>(), player, animator, speed);
+		var enemyIdle = new StateIdle(animator);
+		var enemyAttack = new StateAttack(GetComponent<EnemyCombat>(), animator);
 
 		stateMachine.AddTransition(enemyIdle, enemyRun, () => TargetInSight(player, transform));
+        stateMachine.AddTransition(enemyAttack, enemyIdle, () => !enemyCombat.CanAttack());
+
 		stateMachine.AddAnyTransition(enemyIdle, () => !TargetInSight(player, transform));
 		stateMachine.AddAnyTransition(enemyAttack, () => enemyCombat.CanAttack());
-		stateMachine.AddTransition(enemyAttack, enemyIdle, () => !enemyCombat.CanAttack());
-
 
 		stateMachine.SetState(enemyIdle);
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
-        LookAtPlayer();
-		stateMachine.UpdateStateMachine();
     }
 
-	public void LookAtPlayer()
+	public virtual void FixedUpdate()
+	{
+		LookAtPlayer();
+		stateMachine.UpdateStateMachine();
+	}
+
+	public virtual void LookAtPlayer()
 	{
 		if (Mathf.Abs(transform.position.y - player.position.y) > minLookHeight){
 			return;
@@ -66,7 +70,7 @@ public class Enemy : MonoBehaviour
 	}
 
 
-	public bool TargetInSight(Transform target, Transform self)
+	public virtual bool  TargetInSight(Transform target, Transform self)
     {
         Vector2 vecToTarget = new Vector2(target.position.x - self.position.x, target.position.y - self.position.y);
         float distanceToTarget = vecToTarget.magnitude;
