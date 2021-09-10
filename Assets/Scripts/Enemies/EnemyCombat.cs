@@ -44,7 +44,7 @@ public class EnemyCombat: MonoBehaviour
         //     player.GetComponent<PlayerCombat>().TakeDamage(AttackDamage);
         // }
         numAttack += 1;
-        Debug.Log("Atacked player!! " + numAttack);
+        Debug.Log(gameObject.name + " attacked player!! " + numAttack);
     }
 
 
