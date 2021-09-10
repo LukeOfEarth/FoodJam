@@ -44,14 +44,27 @@ public class HandleFood : MonoBehaviour
         return true;
     }
 
-    public void removeFoodFromSlot(int count)
+    public void removeFoodFromSlot(int count, bool damaged)
     {
-        for(int i=0; i<count; i++)
+        if (filledSlots == 0)
+        {
+            playerState.goDownLayer();
+        }
+
+        for (int i=0; i<count; i++)
         {
             FoodController food = slots[filledSlots - 1].GetComponentInChildren<FoodController>();
             if(food)
             {
-                Destroy(food.gameObject);
+                if (damaged)
+                {
+                    food.Scatter();
+                }
+                else
+                {
+                    Destroy(food.gameObject);
+                }
+                
                 filledSlots--;
             }
         }

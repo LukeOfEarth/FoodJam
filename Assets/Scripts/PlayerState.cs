@@ -46,10 +46,10 @@ public class PlayerState : MonoBehaviour
         // Decide if this needs to return a bool
     }
 
-    public void dropFood(int count)
+    public void dropFood(int count, bool damaged)
     {
         HandleFood attachFood = activeLayer.GetComponent<HandleFood>();
-        attachFood.removeFoodFromSlot(count);
+        attachFood.removeFoodFromSlot(count, damaged);
     }
 
     private bool switchLayer(Transition t)
@@ -99,4 +99,19 @@ public class PlayerState : MonoBehaviour
         switchLayer(Transition.DOWN);
     }
 
+    public void TakeDamage(int amount)
+    {
+        dropFood(amount, true);
+        hp -= amount;
+        CheckForDeath();
+    }
+
+    void CheckForDeath()
+    {
+        //Player death logic goes here
+        if(hp <= 0)
+        {
+            print("Death");
+        }
+    }
 }

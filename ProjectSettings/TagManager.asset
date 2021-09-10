@@ -7,15 +7,15 @@ TagManager:
   - Food
   - GrapplePoint
   - Terrain
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
   - Player
-  - Terrain
   - Water
   - UI
-  - 
+  - UI
   - 
   - 
   - 

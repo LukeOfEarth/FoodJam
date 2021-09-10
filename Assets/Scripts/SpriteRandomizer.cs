@@ -8,7 +8,6 @@ public class SpriteRandomizer : MonoBehaviour
     void Awake()
     {
         int i = Random.Range(0, sprites.Length - 1);
-        print(i);
         GetComponent<SpriteRenderer>().sprite = sprites[i];
     }
 }

@@ -29,9 +29,14 @@ public class ShootingController : MonoBehaviour
 
     void FireProjectile(GameObject projectile)
     {
+        if(playerState.activeLayer.GetComponent<HandleFood>().filledSlots == 0)
+        {
+            playerState.goDownLayer();
+        }
+
         GameObject ammo = playerState.activeLayer.GetComponent<HandleFood>().useFoodAsAmmo();
         GameObject shot = Instantiate(projectile, this.transform.position, projectile.transform.rotation);
-        playerState.dropFood(1);
+        playerState.dropFood(1, false);
         shot.GetComponent<SpriteRenderer>().sprite = ammo.GetComponent<SpriteRenderer>().sprite;
         shot.GetComponent<Rigidbody2D>().AddForce((firePoint.transform.right * speed * 100));
     }
