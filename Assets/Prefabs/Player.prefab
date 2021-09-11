@@ -830,7 +830,7 @@ MonoBehaviour:
   grappableLayerNumber: 3
   HitMe:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 9
   m_camera: {fileID: 0}
   gunHolder: {fileID: 7566168754049389028}
   gunPivot: {fileID: 7566168753624196533}

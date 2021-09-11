@@ -18,4 +18,13 @@ public class PlayerCollisions : MonoBehaviour
             playerState.TakeDamage(damage);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            int damage = 1;
+            playerState.TakeDamage(damage);
+        }
+    }
 }

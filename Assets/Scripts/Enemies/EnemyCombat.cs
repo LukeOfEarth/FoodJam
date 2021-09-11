@@ -40,11 +40,10 @@ public class EnemyCombat: MonoBehaviour
     public void Attack()
     {     
         Collider2D[] players = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
-        // foreach(Collider2D player in players){
-        //     player.GetComponent<PlayerCombat>().TakeDamage(AttackDamage);
-        // }
+        foreach(Collider2D player in players){
+             player.GetComponent<PlayerState>().TakeDamage(AttackDamage);
+        }
         numAttack += 1;
-        Debug.Log(gameObject.name + " attacked player!! " + numAttack);
     }
 
 

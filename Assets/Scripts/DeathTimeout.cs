@@ -21,7 +21,7 @@ public class DeathTimeout : MonoBehaviour
 
     IEnumerator FailSafe()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         player.GetComponentInChildren<GrapplingGun>().active = false;
         player.GetComponentInChildren<GrapplingGun>().retracting = false;
     }

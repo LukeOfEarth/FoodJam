@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5146625597890658360}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,9 +46,9 @@ GameObject:
   - component: {fileID: 5146625598794813818}
   - component: {fileID: 5146625598794813765}
   - component: {fileID: 5146625598794813816}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Goblin
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -200,7 +200,7 @@ MonoBehaviour:
   attackPoint: {fileID: 5146625599170365921}
   playerLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 4
   attackRange: 0.6
 --- !u!95 &5146625598794813765
 Animator:
@@ -254,7 +254,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5146625599170365921}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
