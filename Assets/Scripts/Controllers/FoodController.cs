@@ -20,7 +20,7 @@ public class FoodController : MonoBehaviour
     {
         this.gameObject.transform.parent = null;
         PolygonCollider2D col = this.gameObject.GetComponent<PolygonCollider2D>();
-        col.enabled = true;
+        col.enabled = false;
         int rand = Random.Range(0, 10);
         Rigidbody2D rb = this.gameObject.AddComponent<Rigidbody2D>();
         Vector3 direction = new Vector3(0f, 0.7f, 0);

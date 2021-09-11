@@ -12,7 +12,12 @@ public class Scenes : MonoBehaviour
 
     public void ToMenu()
     {
+        if (GameObject.FindGameObjectWithTag("Player") != null)
+        {
+            Destroy(GameObject.FindGameObjectWithTag("Player"));
+        }
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        Destroy(this.gameObject);
     }
 
     public void ToInstructions()
@@ -23,5 +28,10 @@ public class Scenes : MonoBehaviour
     public void ToCredits()
     {
         SceneManager.LoadScene("CreditsMenu", LoadSceneMode.Single);
+    }
+
+    public void ToGame()
+    {
+        SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
     }
 }

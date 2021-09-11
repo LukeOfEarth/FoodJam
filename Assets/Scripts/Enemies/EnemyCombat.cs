@@ -8,12 +8,15 @@ public class EnemyCombat: MonoBehaviour
     public Transform attackPoint;
     public LayerMask playerLayer;
 
+    public AudioClip damageSound;
+    public GameObject soundFx;
+
     private int numAttack = 0;
 
     int currentHealth;
 
     public float attackRange = 0.5f;
-    public int MaxHealth {get; protected set;} = 10;
+    public int MaxHealth {get; protected set;} = 1;
     public int AttackDamage {get; protected set;} = 1;
 
     
@@ -49,8 +52,12 @@ public class EnemyCombat: MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        animator.SetTrigger("Hurt");
+        //animator.SetTrigger("Hurt");
         currentHealth -= damage;
+        if(soundFx != null)
+        {
+            PlayDamageSound();
+        }
 
         if (currentHealth <= 0)
         {
@@ -62,11 +69,24 @@ public class EnemyCombat: MonoBehaviour
 
     void Die()
     {
-        animator.SetTrigger("Death");
-        
-        GetComponent<Rigidbody2D>().gravityScale = 0;
+        //animator.SetTrigger("Death");
+        animator.enabled = false;
+        if (GetComponent<GroundEnemy>())
+        {
+            GetComponent<GroundEnemy>().enabled = false;
+        }
+
+        if (GetComponent<AirEnemy>())
+        {
+            GetComponent<AirEnemy>().enabled = false;
+        }
+
         GetComponent<Collider2D>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+        Rigidbody2D rb = this.gameObject.GetComponent<Rigidbody2D>();
+        rb.gravityScale = 5;
         this.enabled = false;
+        StartCoroutine("Kill");
     }
 
 
@@ -76,5 +96,25 @@ public class EnemyCombat: MonoBehaviour
             return;
         }
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+    IEnumerator Kill()
+    {
+        StartCoroutine("Flash");
+        yield return new WaitForSeconds(1);
+        Destroy(this.gameObject);
+    }
+
+    IEnumerator Flash()
+    {
+        yield return new WaitForSeconds(0.01f);
+        this.gameObject.GetComponent<SpriteRenderer>().enabled = !this.gameObject.GetComponent<SpriteRenderer>().enabled;
+        StartCoroutine("Flash");
+    }
+
+    void PlayDamageSound()
+    {
+        GameObject sound = Instantiate(soundFx);
+        sound.GetComponent<SoundFX>().PlaySound(damageSound);
     }
 }
