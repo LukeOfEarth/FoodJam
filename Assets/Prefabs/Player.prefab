@@ -827,7 +827,7 @@ MonoBehaviour:
   retractionFinishDistance: 0.5
   retractionDelay: 0.3
   grappleToAll: 0
-  grappableLayerNumber: 3
+  grappableLayerNumber: 0
   HitMe:
     serializedVersion: 2
     m_Bits: 9
