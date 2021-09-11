@@ -23,6 +23,7 @@ public class LevelManager : MonoBehaviour
         }
 
         player.transform.position = spawnPoint.transform.position;
+        player.GetComponentInChildren<GrapplingGun>().CRW();
     }
 
     void CreateLevel()

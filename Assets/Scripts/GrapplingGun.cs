@@ -310,4 +310,9 @@ public class GrapplingGun : MonoBehaviour
         }
         CompleteRetraction();
     }
+
+    public void CRW()
+    {
+        StartCoroutine("CompleteRetractWall");
+    }
 }
