@@ -101,17 +101,60 @@ public class PlayerState : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        dropFood(amount, true);
         hp -= amount;
-        CheckForDeath();
+        if (CheckForDeath())
+        {
+            TriggerDeath();
+        } 
+        else
+        {
+            dropFood(amount, true);
+        }
     }
 
-    void CheckForDeath()
+    private bool CheckForDeath()
     {
         //Player death logic goes here
         if(hp <= 0)
         {
             print("Death");
+            return true;
+        }
+
+        return false;
+    }
+
+    private void TriggerDeath()
+    {
+        this.gameObject.GetComponent<PlayerCollisions>().enabled = false;
+        this.gameObject.GetComponent<CircleCollider2D>().enabled = false;
+        this.gameObject.GetComponent<PlayerController>().enabled = false;
+        this.gameObject.GetComponent<PlayerMovement>().enabled = false;
+        this.gameObject.GetComponentInChildren<GrapplingGun>().enabled = false;
+        this.gameObject.GetComponent<SpringJoint2D>().enabled = false;
+        StartCoroutine("Kill");
+    }
+
+    IEnumerator Kill()
+    {
+        StartCoroutine("Flash");
+        yield return new WaitForSeconds(5);
+        Destroy(this.gameObject);
+    }
+
+    IEnumerator Flash()
+    {
+        yield return new WaitForSeconds(0.01f);
+        this.gameObject.GetComponent<SpriteRenderer>().enabled = !this.gameObject.GetComponent<SpriteRenderer>().enabled;
+        StartCoroutine("Flash");
+    }
+
+    void StopEnemies()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach(GameObject enemy in enemies)
+        {
+            
         }
     }
 }
