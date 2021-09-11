@@ -35,7 +35,7 @@ public class ShootingController : MonoBehaviour
         }
 
         GameObject ammo = playerState.activeLayer.GetComponent<HandleFood>().useFoodAsAmmo();
-        GameObject shot = Instantiate(projectile, this.transform.position, projectile.transform.rotation);
+        GameObject shot = Instantiate(projectile, firePoint.transform.position, projectile.transform.rotation);
         playerState.dropFood(1, false);
         shot.GetComponent<SpriteRenderer>().sprite = ammo.GetComponent<SpriteRenderer>().sprite;
         shot.GetComponent<Rigidbody2D>().AddForce((firePoint.transform.right * speed * 100));

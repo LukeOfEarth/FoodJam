@@ -14,7 +14,7 @@ public class PlayerCollisions : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if(collision.gameObject.tag == "Spikes")
         {
             int damage = 1;
             playerState.TakeDamage(damage);
@@ -23,7 +23,7 @@ public class PlayerCollisions : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Spikes")
         {
             int damage = 1;
             playerState.TakeDamage(damage);

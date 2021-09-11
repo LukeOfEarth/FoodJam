@@ -9,6 +9,7 @@ TagManager:
   - Terrain
   - Enemy
   - Endpoint
+  - Spikes
   layers:
   - Default
   - TransparentFX

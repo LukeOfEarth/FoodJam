@@ -175,7 +175,7 @@ MonoBehaviour:
   attackPoint: {fileID: 7830079713671762964}
   playerLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 4
   damageSound: {fileID: 0}
   soundFx: {fileID: 0}
   attackRange: 0.2
@@ -196,6 +196,7 @@ MonoBehaviour:
   minLookHeight: 15
   sightRange: 15
   speed: 2.5
+  attackRate: 1
   animator: {fileID: 7830079714383830266}
   enemyCombat: {fileID: 7830079714383830269}
 --- !u!61 &-4240681266178867879
