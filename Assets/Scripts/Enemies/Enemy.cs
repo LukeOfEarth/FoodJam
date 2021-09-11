@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
 	public int minLookHeight = 2;
 	public float sightRange = 15f;
 	public float speed = 2.5f;
+	public float attackRate = 1f;
 
 	public Animator animator;
 	public EnemyCombat enemyCombat;
@@ -23,7 +24,7 @@ public class Enemy : MonoBehaviour
 		stateMachine = new StateMachine();
 		var enemyRun = new StateRun(GetComponent<Rigidbody2D>(), player, animator, speed);
 		var enemyIdle = new StateIdle(animator);
-		var enemyAttack = new StateAttack(GetComponent<EnemyCombat>(), animator);
+		var enemyAttack = new StateAttack(GetComponent<EnemyCombat>(), animator, attackRate);
 
 		stateMachine.AddTransition(enemyIdle, enemyRun, () => TargetInSight(player, transform));
         stateMachine.AddTransition(enemyAttack, enemyIdle, () => !enemyCombat.CanAttack());
@@ -46,7 +47,11 @@ public class Enemy : MonoBehaviour
 	}
 
 	public virtual void LookAtPlayer()
-	{
+	{	
+        if (player == null){
+			return;
+		}
+		
 		if (Mathf.Abs(transform.position.y - player.position.y) > minLookHeight){
 			return;
 		}
@@ -72,7 +77,11 @@ public class Enemy : MonoBehaviour
 
 	public virtual bool  TargetInSight(Transform target, Transform self)
     {
-        Vector2 vecToTarget = new Vector2(target.position.x - self.position.x, target.position.y - self.position.y);
+        if (player == null){
+			return false;
+		}
+		
+		Vector2 vecToTarget = new Vector2(target.position.x - self.position.x, target.position.y - self.position.y);
         float distanceToTarget = vecToTarget.magnitude;
         return (distanceToTarget <= sightRange) && (Mathf.Abs(target.position.y - self.position.y) <= minLookHeight);
     }
