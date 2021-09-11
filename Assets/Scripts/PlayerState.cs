@@ -163,7 +163,11 @@ public class PlayerState : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach(GameObject enemy in enemies)
         {
-            enemy.GetComponent<Animator>().enabled = false;
+            if(enemy.GetComponent<Animator>() != null)
+            {
+                enemy.GetComponent<Animator>().enabled = false;
+            }
+            
             if (enemy.GetComponent<EnemyCombat>())
             {
                enemy.GetComponent<EnemyCombat>().enabled = false;
@@ -179,7 +183,10 @@ public class PlayerState : MonoBehaviour
                 enemy.GetComponent<GroundEnemy>().player = null;
             }
 
-            enemy.GetComponent<Rigidbody2D>().gravityScale = 0;
+            if(enemy.GetComponent<Rigidbody2D>() != null)
+            {
+                enemy.GetComponent<Rigidbody2D>().gravityScale = 0;
+            }
         }
     }
 
