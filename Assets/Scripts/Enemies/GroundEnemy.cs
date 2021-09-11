@@ -17,7 +17,7 @@ public class GroundEnemy : Enemy
 		stateMachine = new StateMachine();
 		var enemyRun = new StateRun(GetComponent<Rigidbody2D>(), player, animator, speed);
 		var enemyIdle = new StateIdle(animator);
-		var enemyAttack = new StateAttack(GetComponent<EnemyCombat>(), animator);
+		var enemyAttack = new StateAttack(GetComponent<EnemyCombat>(), animator, attackRate, "Goblin_Attack");
 		var enemyAir = new StateFalling(animator);
 
 		stateMachine.AddTransition(enemyIdle, enemyRun, () => TargetInSight(player, transform));
