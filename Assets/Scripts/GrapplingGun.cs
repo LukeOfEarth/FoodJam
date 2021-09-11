@@ -10,6 +10,7 @@ public class GrapplingGun : MonoBehaviour
     public GameObject collisionObj;
     private PlayerController playerController;
     private PlayerState playerState;
+    private PlayerFX playerFx;
 
     [Header("Retraction:")]
     private GameObject contactPoint;
@@ -74,6 +75,7 @@ public class GrapplingGun : MonoBehaviour
         m_springJoint2D.enabled = false;
         playerController = GetComponentInParent<PlayerController>();
         playerState = GetComponentInParent<PlayerState>();
+        playerFx = GetComponentInParent<PlayerFX>();
     }
 
     private void Update()
@@ -184,9 +186,10 @@ public class GrapplingGun : MonoBehaviour
             if (Physics2D.Raycast(firePoint.position, distanceVector.normalized, length, HitMe))
             {
                 RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized, length, HitMe);
+                print(_hit.transform.gameObject);
                 if (_hit.transform.gameObject.layer == grappableLayerNumber || grappleToAll)
                 {
-                    DecideCollisionBehaviour(_hit.transform.gameObject);
+                    DecideCollisionBehaviour(_hit.transform.gameObject, _hit.point);
                     if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
                     {
                         grapplePoint = _hit.point;
@@ -201,9 +204,10 @@ public class GrapplingGun : MonoBehaviour
             if (Physics2D.Raycast(firePoint.position, distanceVector.normalized, Mathf.Infinity, HitMe))
             {
                 RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized, Mathf.Infinity, HitMe);
+                print(_hit.transform.gameObject);
                 if (_hit.transform.gameObject.layer == grappableLayerNumber || grappleToAll)
                 {
-                    DecideCollisionBehaviour(_hit.transform.gameObject);
+                    DecideCollisionBehaviour(_hit.transform.gameObject, _hit.point);
                     if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
                     {
                         grapplePoint = _hit.point;
@@ -215,7 +219,7 @@ public class GrapplingGun : MonoBehaviour
         }
     }
 
-    void DecideCollisionBehaviour(GameObject col)
+    void DecideCollisionBehaviour(GameObject col, Vector2 point)
     {
         collisionObj = col;
         switch (col.tag)
@@ -224,6 +228,7 @@ public class GrapplingGun : MonoBehaviour
                 StartCoroutine("GrabFood");
                 break;
             case "Terrain":
+                playerFx.SpawnGrappleFX(point);
                 break;
         }
     }
