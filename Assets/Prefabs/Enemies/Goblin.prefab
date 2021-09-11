@@ -201,6 +201,8 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 4
+  damageSound: {fileID: 0}
+  soundFx: {fileID: 0}
   attackRange: 0.6
 --- !u!95 &5146625598794813765
 Animator:
@@ -238,6 +240,7 @@ MonoBehaviour:
   minLookHeight: 2
   sightRange: 15
   speed: 3
+  attackRate: 1
   animator: {fileID: 5146625598794813765}
   enemyCombat: {fileID: 5146625598794813818}
   m_WhatIsGround:

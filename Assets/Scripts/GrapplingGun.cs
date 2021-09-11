@@ -80,6 +80,11 @@ public class GrapplingGun : MonoBehaviour
 
     private void Update()
     {
+        if(m_camera == null)
+        {
+            m_camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        }
+
         if (Input.GetKeyDown(KeyCode.Mouse1) && !active)
         {
             SetGrapplePoint();
