@@ -10,6 +10,9 @@ public class PlayerState : MonoBehaviour
     public GameObject outerLayer;
 
     public GameObject activeLayer;
+
+    public AudioClip damageSound;
+    public GameObject soundFx;
     private enum Transition
     {
         UP,
@@ -109,6 +112,10 @@ public class PlayerState : MonoBehaviour
         else
         {
             dropFood(amount, true);
+            if(damageSound != null)
+            {
+                PlayDamageSound();
+            }
         }
     }
 
@@ -126,12 +133,14 @@ public class PlayerState : MonoBehaviour
 
     private void TriggerDeath()
     {
+        StopEnemies();
         this.gameObject.GetComponent<PlayerCollisions>().enabled = false;
         this.gameObject.GetComponent<CircleCollider2D>().enabled = false;
         this.gameObject.GetComponent<PlayerController>().enabled = false;
         this.gameObject.GetComponent<PlayerMovement>().enabled = false;
         this.gameObject.GetComponentInChildren<GrapplingGun>().enabled = false;
         this.gameObject.GetComponent<SpringJoint2D>().enabled = false;
+        this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 2000);
         StartCoroutine("Kill");
     }
 
@@ -154,7 +163,29 @@ public class PlayerState : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach(GameObject enemy in enemies)
         {
-            
+            enemy.GetComponent<Animator>().enabled = false;
+            if (enemy.GetComponent<EnemyCombat>())
+            {
+               enemy.GetComponent<EnemyCombat>().enabled = false;
+            }
+
+            if (enemy.GetComponent<AirEnemy>())
+            {
+                enemy.GetComponent<AirEnemy>().enabled = false;
+            }
+
+            if (enemy.GetComponent<GroundEnemy>())
+            {
+                enemy.GetComponent<GroundEnemy>().player = null;
+            }
+
+            enemy.GetComponent<Rigidbody2D>().gravityScale = 0;
         }
+    }
+
+    void PlayDamageSound()
+    {
+        GameObject sound = Instantiate(soundFx);
+        sound.GetComponent<SoundFX>().PlaySound(damageSound);
     }
 }

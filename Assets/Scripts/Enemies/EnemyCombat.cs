@@ -8,6 +8,9 @@ public class EnemyCombat: MonoBehaviour
     public Transform attackPoint;
     public LayerMask playerLayer;
 
+    public AudioClip damageSound;
+    public GameObject soundFx;
+
     private int numAttack = 0;
 
     int currentHealth;
@@ -51,6 +54,10 @@ public class EnemyCombat: MonoBehaviour
     {
         //animator.SetTrigger("Hurt");
         currentHealth -= damage;
+        if(soundFx != null)
+        {
+            PlayDamageSound();
+        }
 
         if (currentHealth <= 0)
         {
@@ -76,18 +83,7 @@ public class EnemyCombat: MonoBehaviour
 
         GetComponent<Collider2D>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;
-        int rand = Random.Range(0, 10);
         Rigidbody2D rb = this.gameObject.GetComponent<Rigidbody2D>();
-        Vector3 direction = new Vector3(0f, 0.7f, 0);
-        if (rand < 5)
-        {
-            direction.x = -0.7f;
-        }
-        else
-        {
-            direction.x = 0.7f;
-        }
-       // rb.AddForce(20000 * direction);
         rb.gravityScale = 5;
         this.enabled = false;
         StartCoroutine("Kill");
@@ -114,5 +110,11 @@ public class EnemyCombat: MonoBehaviour
         yield return new WaitForSeconds(0.01f);
         this.gameObject.GetComponent<SpriteRenderer>().enabled = !this.gameObject.GetComponent<SpriteRenderer>().enabled;
         StartCoroutine("Flash");
+    }
+
+    void PlayDamageSound()
+    {
+        GameObject sound = Instantiate(soundFx);
+        sound.GetComponent<SoundFX>().PlaySound(damageSound);
     }
 }
