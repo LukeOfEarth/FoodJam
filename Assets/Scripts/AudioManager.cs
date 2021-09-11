@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject[] sounds;
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        
+        if(GameObject.Find("Fly") == null)
+        {
+            sounds[0].SetActive(false);
+        }
+        else
+        {
+            sounds[0].SetActive(true);
+        }
     }
 }

@@ -263,8 +263,8 @@ MonoBehaviour:
   middleLayer: {fileID: 8846892677379795974}
   outerLayer: {fileID: 8846892677129468100}
   activeLayer: {fileID: 0}
-  damageSound: {fileID: 0}
-  soundFx: {fileID: 0}
+  damageSound: {fileID: 8300000, guid: 42bc477d8964e8c448f367c27652a183, type: 3}
+  soundFx: {fileID: 6703204986744816953, guid: 551b7744ee73ea64eb6d75cafc7978da, type: 3}
 --- !u!114 &118299478454583646
 MonoBehaviour:
   m_ObjectHideFlags: 0

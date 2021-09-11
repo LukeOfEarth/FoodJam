@@ -104,6 +104,11 @@ public class PlayerState : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        if (damageSound != null)
+        {
+            PlayDamageSound();
+        }
+
         hp -= amount;
         if (CheckForDeath())
         {
@@ -112,10 +117,6 @@ public class PlayerState : MonoBehaviour
         else
         {
             dropFood(amount, true);
-            if(damageSound != null)
-            {
-                PlayDamageSound();
-            }
         }
     }
 
@@ -141,6 +142,7 @@ public class PlayerState : MonoBehaviour
         this.gameObject.GetComponentInChildren<GrapplingGun>().enabled = false;
         this.gameObject.GetComponent<SpringJoint2D>().enabled = false;
         this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 2000);
+        this.GetComponentInChildren<LineRenderer>().gameObject.SetActive(false);
         StartCoroutine("Kill");
     }
 

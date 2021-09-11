@@ -20,8 +20,9 @@ public class LevelManager : MonoBehaviour
         if(player == null)
         {
             player = Instantiate(playerPrefab, new Vector3(0, 0, 0), playerPrefab.transform.rotation);
-            player.transform.position = spawnPoint.transform.position;
         }
+
+        player.transform.position = spawnPoint.transform.position;
     }
 
     void CreateLevel()
@@ -32,6 +33,7 @@ public class LevelManager : MonoBehaviour
 
     public void EndLevel()
     {
+        sceneManager = GameObject.Find("SceneManager");
         sceneManager.GetComponent<Scenes>().ToGame();
     }
 }
