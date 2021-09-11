@@ -9,7 +9,7 @@ public class FoodPickup : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public void OnTriggerEnter2D(Collider2D collision)

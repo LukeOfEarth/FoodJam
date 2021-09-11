@@ -1335,6 +1335,7 @@ GameObject:
   - component: {fileID: 7566168754049389031}
   - component: {fileID: 1324723354509458594}
   - component: {fileID: 3156498566449027910}
+  - component: {fileID: 5052115560426782714}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -1577,6 +1578,8 @@ MonoBehaviour:
   middleLayer: {fileID: 7566168752248541690}
   outerLayer: {fileID: 7566168752561784120}
   activeLayer: {fileID: 0}
+  damageSound: {fileID: 0}
+  soundFx: {fileID: 0}
 --- !u!114 &1324723354509458594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1602,3 +1605,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grappleWallFx: {fileID: 6081749781046687315, guid: 669c3219c114a884b9b0161ac0213457, type: 3}
+--- !u!114 &5052115560426782714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7566168754049388575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc502dd1fe29b543a0098db06f86073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

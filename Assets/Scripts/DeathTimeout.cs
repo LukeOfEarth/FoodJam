@@ -7,7 +7,7 @@ public class DeathTimeout : MonoBehaviour
     private GameObject player;
     void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine("FailSafe");
     }
 

@@ -5,9 +5,11 @@ using UnityEngine;
 public class PlayerCollisions : MonoBehaviour
 {
     PlayerState playerState;
+    LevelManager levelManager;
     private void Start()
     {
         playerState = GetComponent<PlayerState>();
+        levelManager = GameObject.Find("GameManager").GetComponent<LevelManager>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -25,6 +27,10 @@ public class PlayerCollisions : MonoBehaviour
         {
             int damage = 1;
             playerState.TakeDamage(damage);
+        }
+        else if (collision.gameObject.tag == "Endpoint")
+        {
+            levelManager.EndLevel();
         }
     }
 }
