@@ -6,9 +6,14 @@ public class ReticleControl : MonoBehaviour
 {
     private Vector3 mousePosition;
     public float moveSpeed = 0.1f;
+    public Camera camera;
     private void Update()
     {
-        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if(!camera)
+        {
+            camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        }
+        mousePosition = camera.ScreenToWorldPoint(Input.mousePosition);
         transform.position = Vector2.Lerp(transform.position, mousePosition, moveSpeed);
     }
 }
