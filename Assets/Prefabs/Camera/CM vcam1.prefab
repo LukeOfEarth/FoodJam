@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4472779426264552978}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.40862, y: -2.7139268, z: -10}
+  m_LocalPosition: {x: -19.40862, y: -2.7139268, z: -100}
   m_LocalScale: {x: 2, y: 1, z: 1}
   m_Children:
   - {fileID: 4472779426266946803}
@@ -66,7 +66,7 @@ MonoBehaviour:
     m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
-    m_InheritPosition: 0
+    m_InheritPosition: 1
     m_OnCameraLive:
       m_PersistentCalls:
         m_Calls: []

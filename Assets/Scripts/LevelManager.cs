@@ -18,9 +18,9 @@ public class LevelManager : MonoBehaviour
             Instantiate(gameMusic);
         }
 
-        if(GameObject.Find("MusicManager") != null)
+        if(GameObject.FindGameObjectWithTag("MenuMusic") != null)
         {
-            Destroy(GameObject.Find("MusicManager"));
+            Destroy(GameObject.FindGameObjectWithTag("MenuMusic"));
         }
 
         sceneManager = GameObject.Find("SceneManager");
@@ -33,7 +33,7 @@ public class LevelManager : MonoBehaviour
             player = Instantiate(playerPrefab, new Vector3(0, 0, 0), playerPrefab.transform.rotation);
         }
 
-        player.transform.position = spawnPoint.transform.position;
+        player.transform.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y, player.transform.position.z);
         player.GetComponentInChildren<GrapplingGun>().CRW();
     }
 
