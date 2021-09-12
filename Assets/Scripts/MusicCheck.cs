@@ -8,7 +8,7 @@ public class MusicCheck : MonoBehaviour
 
     private void Awake()
     {
-        if(GameObject.Find("MusicManger") == null)
+        if(GameObject.FindGameObjectWithTag("MenuMusic") == null)
         {
             Instantiate(music);
         }

@@ -11,6 +11,7 @@ TagManager:
   - Endpoint
   - Spikes
   - GameMusic
+  - MenuMusic
   layers:
   - Default
   - TransparentFX
