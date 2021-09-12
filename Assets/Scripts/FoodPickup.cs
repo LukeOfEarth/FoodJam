@@ -6,6 +6,8 @@ public class FoodPickup : MonoBehaviour
 {
     public FoodController food;
     private GameObject player;
+    public GameObject soundFx;
+    public AudioClip pickup;
 
     private void Start()
     {
@@ -19,6 +21,8 @@ public class FoodPickup : MonoBehaviour
         if (isPlayer)
         {
             player.GetComponent<PlayerState>().pickupFood(food);
+            GameObject sound = Instantiate(soundFx);
+            sound.GetComponent<SoundFX>().PlaySound(pickup);
         }
     }
 }

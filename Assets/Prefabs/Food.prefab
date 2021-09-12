@@ -101,6 +101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   food: {fileID: 796299536232183817}
+  soundFx: {fileID: 6703204986744816953, guid: 551b7744ee73ea64eb6d75cafc7978da, type: 3}
+  pickup: {fileID: 8300000, guid: 53336ea52c00248418fe54afe882bfc9, type: 3}
 --- !u!114 &796299536232183817
 MonoBehaviour:
   m_ObjectHideFlags: 0

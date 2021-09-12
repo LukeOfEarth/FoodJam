@@ -22,5 +22,4 @@ public class AirEnemy : Enemy
 
 		stateMachine.SetState(enemyIdle);
     }
-
 }
