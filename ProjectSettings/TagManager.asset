@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Endpoint
   - Spikes
+  - GameMusic
   layers:
   - Default
   - TransparentFX

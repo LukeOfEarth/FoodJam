@@ -9,9 +9,20 @@ public class LevelManager : MonoBehaviour
     private GameObject player;
     private GameObject spawnPoint;
     private GameObject sceneManager;
+    public GameObject gameMusic;
 
     private void Awake()
     {
+        if(GameObject.FindGameObjectWithTag("GameMusic") == null)
+        {
+            Instantiate(gameMusic);
+        }
+
+        if(GameObject.Find("MusicManager") != null)
+        {
+            Destroy(GameObject.Find("MusicManager"));
+        }
+
         sceneManager = GameObject.Find("SceneManager");
         CreateLevel();
         spawnPoint = GameObject.Find("SpawnPlayer");
