@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2548043131402419944}
   - component: {fileID: 5315012651656505351}
   - component: {fileID: 9111356173220153084}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Exit
   m_TagString: Endpoint
   m_Icon: {fileID: 0}
@@ -72,8 +72,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1604312987
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3a5f186258bcc7740b1a3fe36d6d654f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 4909914883853359319}
   - component: {fileID: 5445874934246462185}
   - component: {fileID: 9186900560254397142}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4906,8 +4906,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1604312987
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
