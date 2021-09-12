@@ -212,6 +212,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  soundFx: {fileID: 6703204986744816953, guid: 551b7744ee73ea64eb6d75cafc7978da, type: 3}
+  jumpSound: {fileID: 8300000, guid: ee17f079ccc40e24a8caeaf4ccff27b2, type: 3}
 --- !u!95 &8846892675657591837
 Animator:
   serializedVersion: 3

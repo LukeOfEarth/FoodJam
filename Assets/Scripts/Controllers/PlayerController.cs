@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
 	[Space]
 
 	public UnityEvent OnLandEvent;
+	public GameObject soundFx;
+	public AudioClip jumpSound;
 
 	[System.Serializable]
 	public class BoolEvent : UnityEvent<bool> { }
@@ -88,6 +90,11 @@ public class PlayerController : MonoBehaviour
 			// Add a vertical force to the player.
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+			if(jumpSound != null)
+            {
+				GameObject sound = Instantiate(soundFx);
+				sound.GetComponent<SoundFX>().PlaySound(jumpSound);
+            }
 		}
 	}
 
