@@ -150,6 +150,7 @@ public class PlayerState : MonoBehaviour
     {
         StartCoroutine("Flash");
         yield return new WaitForSeconds(5);
+        GameObject.Find("SceneManager").GetComponent<Scenes>().ToMenu();
         Destroy(this.gameObject);
     }
 
