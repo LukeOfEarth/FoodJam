@@ -175,6 +175,8 @@ MonoBehaviour:
   firePoint: {fileID: 8846892676160049803}
   ammo: 10
   speed: 5
+  soundFx: {fileID: 6703204986744816953, guid: 551b7744ee73ea64eb6d75cafc7978da, type: 3}
+  shoot: {fileID: 8300000, guid: adc511c37add1114faf2809fcf71bd40, type: 3}
 --- !u!114 &8846892675657591834
 MonoBehaviour:
   m_ObjectHideFlags: 0

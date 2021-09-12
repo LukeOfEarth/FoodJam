@@ -10,6 +10,8 @@ public class ShootingController : MonoBehaviour
     public int ammo;
     public float speed;
     private PlayerState playerState;
+    public GameObject soundFx;
+    public AudioClip shoot;
     private void Start()
     {
         playerState = GetComponent<PlayerState>();
@@ -39,5 +41,10 @@ public class ShootingController : MonoBehaviour
         playerState.dropFood(1, false);
         shot.GetComponent<SpriteRenderer>().sprite = ammo.GetComponent<SpriteRenderer>().sprite;
         shot.GetComponent<Rigidbody2D>().AddForce((firePoint.transform.right * speed * 100));
+        if(shoot != null)
+        {
+            GameObject sound = Instantiate(soundFx);
+            sound.GetComponent<SoundFX>().PlaySound(shoot);
+        }
     }
 }
