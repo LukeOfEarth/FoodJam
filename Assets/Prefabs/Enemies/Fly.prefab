@@ -177,8 +177,9 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 4
-  damageSound: {fileID: 0}
-  soundFx: {fileID: 0}
+  damageSound: {fileID: 8300000, guid: 752873f0687c85748a93b2a7a59bcef1, type: 3}
+  attackSound: {fileID: 0}
+  soundFx: {fileID: 6703204986744816953, guid: 551b7744ee73ea64eb6d75cafc7978da, type: 3}
   attackRange: 0.2
 --- !u!114 &7830079714383830265
 MonoBehaviour:

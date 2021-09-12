@@ -9,6 +9,7 @@ public class EnemyCombat: MonoBehaviour
     public LayerMask playerLayer;
 
     public AudioClip damageSound;
+    public AudioClip attackSound;
     public GameObject soundFx;
 
     private int numAttack = 0;
@@ -47,6 +48,11 @@ public class EnemyCombat: MonoBehaviour
              player.GetComponent<PlayerState>().TakeDamage(AttackDamage);
         }
         numAttack += 1;
+        if(attackSound != null)
+        {
+            GameObject sound = Instantiate(soundFx);
+            sound.GetComponent<SoundFX>().PlaySound(attackSound);
+        }
     }
 
 
