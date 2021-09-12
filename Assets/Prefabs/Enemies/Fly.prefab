@@ -107,7 +107,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1604312987
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -2544757317724512443, guid: 00b90d83e765bbc459d3888e5c5f273f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -180,6 +180,7 @@ MonoBehaviour:
   damageSound: {fileID: 8300000, guid: 752873f0687c85748a93b2a7a59bcef1, type: 3}
   attackSound: {fileID: 0}
   soundFx: {fileID: 6703204986744816953, guid: 551b7744ee73ea64eb6d75cafc7978da, type: 3}
+  scoreFX: {fileID: 3411036408139227980, guid: d987a1404226e1940a011220a44cfe62, type: 3}
   attackRange: 0.2
 --- !u!114 &7830079714383830265
 MonoBehaviour:

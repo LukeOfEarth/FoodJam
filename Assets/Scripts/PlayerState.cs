@@ -13,6 +13,8 @@ public class PlayerState : MonoBehaviour
 
     public AudioClip damageSound;
     public GameObject soundFx;
+
+    public int score;
     private enum Transition
     {
         UP,

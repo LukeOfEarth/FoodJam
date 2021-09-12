@@ -12,6 +12,8 @@ public class EnemyCombat: MonoBehaviour
     public AudioClip attackSound;
     public GameObject soundFx;
 
+    public GameObject scoreFX;
+
     private int numAttack = 0;
 
     int currentHealth;
@@ -75,7 +77,8 @@ public class EnemyCombat: MonoBehaviour
 
     void Die()
     {
-        //animator.SetTrigger("Death");
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerState>().score += 100;
+        Instantiate(scoreFX, this.gameObject.transform.position, scoreFX.transform.rotation);
         animator.enabled = false;
         if (GetComponent<GroundEnemy>())
         {
