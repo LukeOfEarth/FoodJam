@@ -39,7 +39,7 @@ public class LevelManager : MonoBehaviour
 
     void CreateLevel()
     {
-        int i = Random.Range(0, levels.Length - 1);
+        int i = Random.Range(0, levels.Length);
         GameObject level = Instantiate(levels[i], new Vector3(0, 0, 0), levels[i].transform.rotation);
     }
 
