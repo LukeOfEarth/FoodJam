@@ -196,7 +196,7 @@ MonoBehaviour:
   isFlipped: 0
   minLookHeight: 15
   sightRange: 15
-  speed: 2.5
+  speed: 3
   attackRate: 1
   animator: {fileID: 7830079714383830266}
   enemyCombat: {fileID: 7830079714383830269}
