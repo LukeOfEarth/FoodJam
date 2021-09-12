@@ -247,7 +247,7 @@ MonoBehaviour:
   enemyCombat: {fileID: 5146625598794813818}
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 23
   m_GroundCheck: {fileID: 5146625597890658360}
   m_Grounded: 0
 --- !u!1 &5146625599170365920
