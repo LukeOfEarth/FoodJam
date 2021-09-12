@@ -88,7 +88,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -845434687
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9cd16bb7c77072c4a85caed05db9cf5b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_AirControl: 0
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 63
+    m_Bits: 31
   m_GroundCheck: {fileID: 8846892676848222760}
   m_CeilingCheck: {fileID: 8846892676302174785}
   baseGravity: 5
@@ -269,6 +269,7 @@ MonoBehaviour:
   activeLayer: {fileID: 0}
   damageSound: {fileID: 8300000, guid: 42bc477d8964e8c448f367c27652a183, type: 3}
   soundFx: {fileID: 6703204986744816953, guid: 551b7744ee73ea64eb6d75cafc7978da, type: 3}
+  score: 0
 --- !u!114 &118299478454583646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,7 +498,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -845434687
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
