@@ -341,6 +341,8 @@ MonoBehaviour:
   - {fileID: 7672229753558378093, guid: dda185ae5cb349145bf5211fa3018531, type: 3}
   - {fileID: 2507603162894140683, guid: c78140c9440846c42a5f9a2d6675f58c, type: 3}
   - {fileID: 9199862797043990951, guid: 7bb74bb5ae334ff4db2cb772cdf6d595, type: 3}
+  - {fileID: 2035182103113744202, guid: a81f0e1e3ec05104e95596baf8802a2c, type: 3}
+  - {fileID: 6903240282618736254, guid: 811df2ccc515c1245bf54cddab4d0c4a, type: 3}
   playerPrefab: {fileID: 8846892675657592291, guid: 8a2a7bcf688e3d646a4ba10cd54dd2a2, type: 3}
 --- !u!4 &1746424654
 Transform:
