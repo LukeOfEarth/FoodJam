@@ -12,6 +12,7 @@ public class Scenes : MonoBehaviour
 
     public void ToMenu()
     {
+        print("running");
         if (GameObject.FindGameObjectWithTag("Player") != null)
         {
             Destroy(GameObject.FindGameObjectWithTag("Player"));
